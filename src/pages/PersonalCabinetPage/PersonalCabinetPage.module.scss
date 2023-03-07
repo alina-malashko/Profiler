@@ -1,0 +1,91 @@
+@use '../../static/scss/variables';
+.page {
+    min-height: 100vh;
+    text-align: center;
+    width: 100vw;
+    &__container {
+        background: variables.$background-main url("../../static/images/background-personal-cabinet.png") 54% 0% / 2100px 216px no-repeat;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        text-align: center;
+        width: 100%;
+    }
+    &__content {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: calc(100% - 320px);
+    }
+    &__header {
+
+    }
+    &__main {
+
+    }
+    &__sidebar {
+        flex-basis: 320px;
+        position: relative;
+    }
+    @media (max-width: 1365px) {
+        &__container {
+            display: block;
+            width: 428px;
+            background: variables.$background-main url("../../static/images/background-personal-cabinet-small.png") 0 56px / contain no-repeat;
+        }
+        &__header {
+
+        }
+        &__content {
+            width: 100%;
+        }
+        &__sidebar {
+            width: 100%;
+        }
+    }
+    @media (max-width: 428px) {
+        &__container {
+            width: 100%;
+        }
+    }
+}
+.page_hidden {
+    visibility: hidden;
+    overflow: hidden;
+    height: 0;
+}
+.header {
+    display: none;
+    @media (max-width: 1365px) {
+        display: flex;
+        width: 428px;
+        justify-content: space-between;
+        height: 66px;
+        padding: 23px 16px 13px;
+        position: fixed;
+        top: 0;
+        right: calc(50% - 428px/2);
+        z-index: 2;
+        backdrop-filter: blur(2px);
+        &__burger {
+            cursor: pointer;
+        }
+    }
+    @media (max-width: 428px) {
+        width: 100%;
+        right: 0;
+    }
+}
+.exit {
+    align-self: flex-end;
+    margin: 50px 50px 0 0;
+    font-size: 1.25em;
+    line-height: 1.32;
+    & p {
+        height: 26px;
+    }
+    @media (max-width: 1365px) {
+        display: none;
+    }
+}

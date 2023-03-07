@@ -1,0 +1,48 @@
+@import 'src/static/scss/variables';
+@import 'src/static/scss/mixins';
+
+.page {
+  margin: 0 auto;
+  max-width: 1216px;
+  padding: 0 80px;
+  @media (max-width: 1365px) {
+    padding: 0;
+  }
+  &__title {
+    font-size: 1.625em;
+    line-height: 1.32;
+    font-weight: 600;
+    color: $text-primary-dark-blue;
+    margin: 0 0 40px 0;
+    text-align: left;
+    @media (max-width: 1365px) {
+      font-size: 1em;
+      margin: 0 0 24px 0;
+    }
+    @media (max-width: 428px) {
+      margin: 0 0 24px 16px;
+    }
+  }
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    @include adaptive-value('column-gap', 86, 30, 1535, 1366);
+    gap: 32px 15.25px;
+
+    @media (max-width: 1365px) {
+      justify-content: space-between;
+      padding: 0 16px;
+      gap: 20px 12px;
+    }
+    @media (max-width: 360px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+  }
+
+
+
+
+
+}

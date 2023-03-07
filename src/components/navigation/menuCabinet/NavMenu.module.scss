@@ -1,0 +1,217 @@
+@use '../../../static/scss/variables';
+
+@keyframes opacity-animation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes color-animation {
+    0% {
+        color: variables.$text-primary-dark-blue;
+    }
+    100% {
+        color: variables.$text-primary-blue;
+    }
+}
+
+@keyframes stroke-animation {
+    0% {
+        stroke: variables.$text-primary-dark-blue;
+    }
+    100% {
+        stroke: variables.$text-primary-blue;
+    }
+}
+
+.sidebar {
+    width: 320px;
+    background: variables.$background-sidebar;
+    padding: 30px 0 0 50px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    &_open__header {
+        display: none;
+    }
+    &__logo {
+        padding: 0 0 40px 0;
+        & img {
+            width: 130px;
+            height: 44px;
+        }
+    }
+    &__photo {
+        padding: 0px 0px 0px 40px;
+    }
+    &__number {
+        color: variables.$text-primary-grey;
+        font-size: 0.875em;
+        font-weight: 500;
+        line-height: 1.32;
+        padding: 12px 0px 31px 28px;
+    }
+    &__number__id {
+        font-weight: 400;
+        padding-left: 5px;
+    }
+    &__nav__link {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 12px;
+        padding: 15px 24px;
+        font-weight: 400;
+        font-size: 1.125em;
+        line-height: 1.32;
+        color: variables.$text-primary-dark-blue;
+        position: relative;
+        background: variables.$background-sidebar;
+        & p {
+            height: 23px;
+        }
+        & svg {
+            stroke: variables.$text-primary-dark-blue;
+        }
+        &:hover {
+            color: variables.$text-primary-blue;
+            & svg {
+                stroke: variables.$text-primary-blue;
+            }
+        }
+    }
+    @media (max-width: 1365px) {
+        background: variables.$background-main url("../../../static/images/background-personal-cabinet-burger.png") 0 calc(100% - 54px) / contain no-repeat;
+        width: 428px;
+        height: 100vh;
+        margin: 0 auto;
+        position: absolute;
+        z-index: 3;
+        top: 0;
+        right: calc(50% - 428px/2);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 100ms ease-in;
+        &__logo {
+            display: none;
+        }
+        &__photo {
+            display: none;
+        }
+        &__number {
+            display: none;
+        }
+    }
+    @media (max-width: 428px) {
+        width: 100%;
+        right: 0;
+    }
+}
+
+.sidebar_open.sidebar {
+    @media (max-width: 1365px) {
+        visibility: visible;
+        opacity: 1;
+        padding: 20px 16px 0;
+        .sidebar {
+            &_open__header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 24px;
+                &_exit {
+                    cursor: pointer;
+                }
+            }
+            &__nav__link {
+                column-gap: 8px;
+                padding: 12.5px 0;
+                font-size: 1em;
+                color: variables.$text-primary-dark-blue;
+                background: transparent;
+                border-radius: 0%;
+                & p {
+                    height: 21px;
+                }
+                & svg {
+                    stroke: variables.$text-primary-dark-blue;
+                }
+            }
+            &__nav__link:hover {
+                color: variables.$text-primary-blue;
+                & svg {
+                    stroke: variables.$text-primary-blue;
+                }
+            }
+        }
+        .active {
+            & .sidebar__nav__link {
+                color: variables.$text-primary-blue;
+                & svg {
+                    stroke: variables.$text-primary-blue;
+                }
+                &::before {
+                    content: none;
+                }
+                &::after {
+                    content: none;
+                }
+            }
+        }
+    }
+}
+
+.active {
+    & .sidebar__nav__link {
+        background-color: variables.$background-main;
+        color: variables.$text-primary-blue;
+        border-radius: 15px 0 0 15px;
+        color: variables.$text-primary-blue;
+        font-weight: 600;
+        animation: opacity-animation 500ms ease-out alternate;
+        &::after {
+            content: '';
+            animation: opacity-animation 500ms ease-out alternate;
+            position: absolute;
+            top: -15px;
+            right: 0;
+            width: 15px;
+            height: 15px;
+            z-index: 1;
+            background: radial-gradient(circle at left top, transparent 15px, #fff 15px);
+        }
+        &::before {
+            content: '';
+            animation: opacity-animation 500ms ease-out alternate;
+            position: absolute;
+            bottom: -15px;
+            right: 0;
+            width: 15px;
+            height: 15px;
+            z-index: 1;
+            background: radial-gradient(circle at left bottom, transparent 15px, #fff 15px);
+        }
+        & svg {
+            stroke: variables.$text-primary-blue;
+        }
+    }
+}
+
+.exit{
+    display: none;
+    @media (max-width: 1365px) {
+        margin: auto 0 58px;
+        display: block;
+        & p {
+            font-size: 1em;
+            height: 21px;
+        }
+    }
+}

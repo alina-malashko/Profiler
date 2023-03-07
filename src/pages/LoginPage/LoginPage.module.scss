@@ -1,0 +1,92 @@
+@use '../../static/scss/variables';
+.page {
+    min-height: 100vh;
+    width: 100%;
+    text-align: center;
+    background: variables.$background-main url("../../static/images/background-login.png") center / cover no-repeat;
+    overflow: hidden;
+    padding: 30px 16px;
+    @media(max-width: 1365px) {
+        background-image: url("../../static/images/background-login-small.png");
+        width: 428px;
+        margin: auto;
+    }
+    @media(max-width: 428px) {
+        width: 100%;
+    }
+
+    &__container {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 420px;
+        text-align: center;
+        width: 100%;
+        @media(max-width: 1365px) {
+            max-width: 100%;
+        }
+    }
+    &__header {
+        color: variables.$text-primary-blue;
+        font-weight: 700;
+        font-size: 2.25em;
+        line-height: 1.33;
+        margin-bottom: 10px;
+    }
+
+    &__title {
+        color: variables.$text-primary-grey;
+        font-weight: 400;
+        font-size: 0.875em;
+        line-height: 1.357;
+        margin-bottom: 48px;
+        @media(min-width: 1365px) {
+            margin-bottom: 50px;
+        }
+    }
+}
+.header {
+    display: flex;
+    min-height: 242px;
+    padding-left: 54px;
+    img {
+        width:140px;
+        height: 143px;
+    }
+    @media (max-width: 1919.99px) {
+        min-height: 154px;
+    }
+    @media (max-width: 1365px) {
+        min-height: 108px;
+        padding-left: 0px;
+        img {
+            width: 86px;
+            height: 78px;
+        }
+    }
+}
+.form {
+    width: 100%;
+    &__inputs {
+        &:not(:last-child) {
+            margin-bottom: 31px;
+            @media(max-width: 1365px) {
+                margin-bottom: 32px;
+            }
+        }
+    }
+    &__input {
+        &:not(:last-child) {
+            margin-bottom: 26px;
+        }
+    }
+    &__button {
+        display: inline-block;
+        width: 350px;
+        @media(max-width: 1365px) {
+            width: 100%;
+        }
+    }
+}

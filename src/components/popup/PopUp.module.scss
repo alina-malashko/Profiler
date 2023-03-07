@@ -1,0 +1,98 @@
+@import 'src/static/scss/variables';
+@import 'src/static/scss/mixins';
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  &__bcg {
+    position: relative;
+    flex: 0 0 520px;
+    background-color: $popup-background-main;
+    padding: 40px 40px 30px;
+    border-radius: 15px;
+  }
+  &__content {
+    color: $text-primary-dark-blue;
+    text-align: center;
+  }
+  &__close {
+    position: absolute;
+    top: 18.25px;
+    right: 18.25px;
+    width: 15.5px;
+    height: 15.5px;
+    cursor: pointer;
+  }
+  &__header {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+  &__title {
+    font-weight: 500;
+    font-size: rem(20);
+    line-height: 1.3;
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+  &__subtitle {
+    font-size: rem(18);
+    line-height: 1.334;
+  }
+
+  &__buttons {
+    padding: 0px 30px;
+    display: flex;
+    column-gap: 40px;
+  }
+
+  &__button {
+    width: 100%;
+    max-width: 170px;
+  }
+
+  &_adaptive {
+    @media (max-width: 1365.98px) {
+      .modal__bcg {
+        flex: 0 0 340px;
+        padding: 34px 10px 20px;
+      }
+
+      .modal__title {
+        font-size: rem(16);
+        line-height: 1.3125;
+      }
+
+      .modal__subtitle {
+        font-size: rem(14);
+        line-height: 1.357;
+      }
+
+      .modal__buttons {
+        padding: 0;
+        column-gap: 20px;
+      }
+
+      .modal__close {
+        top: 12.5px;
+        right: 12.5px;
+        width: 13px;
+        height: 13px;
+        & svg {
+          width: 13px;
+          height: 13px;
+        }
+      }
+
+    }
+  }
+}

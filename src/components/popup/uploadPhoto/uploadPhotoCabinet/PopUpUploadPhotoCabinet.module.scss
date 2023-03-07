@@ -1,0 +1,329 @@
+@use '../../../../static/scss/variables';
+
+@keyframes mobile-animation {
+    from {
+        bottom: -630px;
+    }
+    to {
+        bottom: 0;
+    }
+}
+
+.overlay {
+    width: 100vw;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    cursor: default;
+}
+.modal {
+    width: 626px;
+    height: 406px;
+    background-color: variables.$background-main;
+    border-radius: 15px;
+    position: absolute;
+    z-index: 30;
+    bottom: calc(50% - 406px / 2);
+    left: calc(50% - 626px / 2);
+    &__content {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.125em;
+        line-height: 1.32;
+        color: variables.$text-primary-dark-blue;
+        text-align: center;
+        width: 586px;
+        padding: 20px 0 20px;
+        font-weight: 500;
+        margin: 0 auto;
+        &__title {
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        &__subtitle {
+            margin-bottom: 16px;
+        }
+        & span {
+            font-weight: 700;
+        }
+        &__photo {
+            display: none;
+            &__wrapper {
+                position: relative;
+            }
+            &__preview {
+                display: none;
+            }
+        }
+    }
+    &__close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        cursor: pointer;
+    }
+    &__images {
+        width: 290px;
+        display: flex;
+        gap: 50px;
+        margin: 0 auto 20px;
+        &__image {
+            position: relative;
+        } 
+    }
+    &__button {
+        margin: 0 auto;
+        width: 170px;
+        &__label {
+            display: block;
+            width: 100%;
+            height: 54px;
+            background-color: variables.$button-default;
+            border-radius: 12px;
+            color: variables.$background-main;
+            font-size: 1.25em;
+            line-height: 1.32;
+            font-weight: 600;
+            padding: 14px 17.5px 0;
+            position: relative;
+            white-space: nowrap;
+            cursor: pointer;
+            &:hover, &:focus {
+                background-color: variables.$button-hover;
+            }
+            &:active {
+                background-color: variables.$button-active;
+            }
+        }
+        & input[type='file'] {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+    }
+    &__buttons {
+        display: none;
+    }
+    @media (max-width: 1365px) {
+        width: 360px;
+        height: 630px;
+        border-radius: 25px 25px 0 0;
+        bottom: 0;
+        left: calc(50% - 360px / 2);
+        animation: mobile-animation 500ms ease-out;
+        &__content {
+            gap: 20px;
+            font-size: 0.875em;
+            line-height: 1.322;
+            padding: 20px 15px 26px;
+            font-weight: 400;
+            width: 100%;
+            & p {
+                text-align: left;
+            }
+            &__subtitle {
+                font-weight: 500;
+                width: 250px;
+                margin-bottom: 0;
+            }
+            &__title {
+                width: 270px;
+                padding-bottom: 0;
+                font-weight: 500;
+                font-size: 1.125em;
+                margin: 22px auto -2px;
+            }
+            & span {
+                font-weight: 500;
+            }
+            &__photo {
+                display: block;
+                margin: 0 auto 10px;
+                height: 130px;
+                width: 130px;
+                padding: 49px 22px 43px;
+                background: variables.$background-main;
+                border: variables.$text-primary-blue solid 1px;
+                border-radius: 50%;
+                position: relative;
+                & p {
+                    text-align: center;
+                }
+                &__button {
+                    width: 20px;
+                    height: 20px;
+                    padding: 3.75px;
+                    margin: 0 auto;
+                    background-color: #F0F5FF;
+                    border-radius: 50%;
+                    text-align: center;
+                    & svg {
+                        display: block;
+                        width: 12.5px;
+                        height: 12.5px;
+                    }
+                }
+                &__title {
+                    white-space: nowrap;
+                    color: variables.$text-primary-blue;
+                    font-weight: 600;
+                    font-size: 0.75em;
+                    line-height: 1.32;
+                }
+                & input[type='file'] {
+                    position: absolute;
+                    top: 0%;
+                    left: 0%;
+                    z-index: 2;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+                &__preview {
+                    display: block;
+                    margin: 0 auto 10px;
+                    height: 130px;
+                    width: 130px;
+                    border-radius: 50%;
+                    position: relative;
+                }
+            }
+        }
+        &__close {
+            top: 15px;
+            right: 15px;
+        }
+        &__images {
+            width: 226px;
+            gap: 26px;
+            margin: 0 auto 30px;
+            & img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        &__button {
+            display: none;
+        }
+        &__buttons {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 48px;
+            gap: 15px;
+            &__button {
+                width: 157.5px;
+                &__label {
+                    font-family:"Red Hat Display";
+                    height: 48px;
+                    padding: 11px 0 0;
+                    width: 100%;
+                    font-weight: 600;
+                    font-size: 1.25em;
+                    line-height: 1.3125;
+                    background-color: variables.$button-default;
+                    border-radius: 10px;
+                    text-align: center;
+                    color: variables.$text-primary-white;
+                    cursor: pointer;
+                    outline: none;
+                    user-select: none;
+                    position: relative;
+                    display: block;
+                    &:hover, &:focus {
+                        background-color: variables.$button-hover;
+                    }
+                    &:active {
+                        background-color: variables.$button-active;
+                    }
+                    &:disabled {
+                        background-color: variables.$button-disabled;
+                    }
+                    & input[type='file'] {
+                        position: absolute;
+                        top: 0%;
+                        left: 0%;
+                        z-index: 2;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 0;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 428px) {
+        width: 100%;
+        left: 0;
+    }
+}
+
+.cross {
+    position: absolute;
+    top: calc(0% - 5px);
+    left: calc(0% - 13px);
+    width: 24px;
+    height: 24px;
+    background: url(../../../../static/images/cross.png);
+    background-size: cover;
+    @media (max-width: 1365px) {
+        width: 26px;
+        height: 26px;
+        top: calc(0% - 6px);
+        left: calc(0% - 6px);
+    }
+}
+
+.check {
+    position: absolute;
+    top: calc(0% - 8px);
+    left: calc(0% - 12px);
+    width: 24px;
+    height: 24px;
+    background: url(../../../../static/images/check.png);
+    background-size: cover;
+    @media (max-width: 1365px) {
+        top: calc(0% - 6px);
+        left: calc(0% - 6px);
+    }
+}
+
+.loader {
+    display: none;
+    @media (max-width: 1365px) {
+        display: block;
+        width: 130px;
+        height: 130px;
+        position: absolute;
+        top: 0;
+        left: calc(50% - 130px / 2);
+        z-index: 2;
+        &__empty {
+            background: variables.$background-main;
+            width: 100%;
+            height: 100%;
+            padding: 53px;
+            border-radius: 50%;
+            border: variables.$text-primary-blue solid 1px;
+        }
+        &__blur {
+            background: transparent;
+            backdrop-filter: blur(2px);
+            width: 100%;
+            height: 100%;
+            padding: 53px;
+            border-radius: 50%;
+        }
+    }
+}

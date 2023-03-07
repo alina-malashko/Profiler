@@ -1,0 +1,139 @@
+@import 'src/static/scss/variables';
+@import'src/static/scss/mixins';
+
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1115px;
+  min-width: 946px;
+
+  &_mb_60 {
+      margin-bottom: 60px;
+  }
+}
+
+
+.title {
+  text-align: left;
+  font-weight: 500;
+  font-size:rem(24);
+  line-height: 1.334;
+  color: $text-primary-dark-blue;
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+
+  &_mb_60 {
+    &:not(:last-child) {
+      margin-bottom: 60px;
+    }
+  }
+}
+
+.form {
+  display: grid;
+  row-gap: 48px;
+  grid-template-columns: 156px minmax(420px, 523px) minmax(370px, 436px);
+  grid-template-areas:
+    "container container container"
+    ". buttons ."  ;
+
+
+  &__container {
+    grid-area: container;
+    display: grid;
+    row-gap: 30px;
+    grid-template-columns: 156px minmax(420px, 523px) minmax(370px, 436px);
+
+    &_personalInformationPage {
+      grid-template-areas:
+      "photo photo ."
+      "fields fields advice"
+      ". checkboxes ."  ;
+    }
+
+    &_contactsPage, &_aboutYourselfPage {
+      grid-template-areas:
+      "fields fields advice"
+    }
+  }
+
+  &__clearFields {
+    position: absolute;
+    right: 0;
+    top: -42px;
+  }
+
+  &__lines {
+    position: relative;
+    grid-area: fields;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+  }
+
+  &__photo {
+    grid-area: photo;
+  }
+
+  &__inputBlock, &__photo, &__textarea {
+    display: flex;
+    align-items: center;
+  }
+
+  &__textarea {
+    align-items: flex-start;
+    min-height: 280px;
+  }
+
+  &__label {
+    flex: 0 0 156px;
+    color: $text-primary-dark-blue;
+    font-weight: 400;
+    font-size: rem(18);
+    line-height: 1.334;
+
+    &:after {
+      content: '*';
+      color: $text-primary-error;
+      margin-left: 2px;
+    }
+
+    &_pt_12 {
+      padding-top: 12px;
+    }
+
+    &_afterNone {
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  &__checkboxes {
+    justify-self: flex-end;
+    grid-area: checkboxes;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 62px;
+  }
+  &__buttons {
+    grid-area: buttons;
+    display: flex;
+  }
+  &__button {
+    width: 100%;
+    max-width: 170px;
+    &:last-of-type {
+      margin-left: auto;
+    }
+  }
+  &__advice {
+    grid-area: advice;
+    @include adaptive-value('margin-left', 59, 50, 1535, 1366);
+    @media(max-width: 1366px) {
+      margin-left: 50px;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@use '../../static/scss/variables';
+
+.logout {
+    cursor: pointer;
+    &__link {
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+        color: variables.$text-primary-blue;
+        & svg {
+            display: block;
+            stroke: variables.$text-primary-blue;
+        }
+    }
+    &__link:hover p, &__link:focus p {
+        border-bottom: 1px variables.$text-primary-blue solid;
+    }
+    &__link:active {
+        color: variables.$text-primary-dark-blue;
+        & p {
+            text-decoration: none;
+        }
+        & svg {
+            stroke: variables.$text-primary-dark-blue;
+        }
+    }
+}

@@ -1,0 +1,160 @@
+@import 'src/static/scss/variables';
+@import 'src/static/scss/mixins';
+
+.search {
+  font-family: "Red Hat Display";
+  position: relative;
+  width: 100%;
+
+  &__inputContainer {
+    position: relative;
+    &_adaptive {
+      @media (max-width: 1365.98px) {
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+  &__input {
+    font-family: inherit;
+    border-radius: 15px;
+    background-color: $input-background;
+    padding: rem(11);
+    border: 1px solid transparent;
+    font-size: 1.125rem;
+    line-height: 1.3334;
+    width: 100%;
+    font-weight: 400;
+    outline: none;
+    caret-color: $text-primary-blue;
+    color: $text-primary-dark-blue;
+    -webkit-text-fill-color: $text-primary-dark-blue;
+
+    &:hover, &:focus {
+      border-color: $input-stroke-active;
+    }
+
+    &:disabled {
+      cursor: no-drop;
+    }
+
+    &:disabled:hover {
+      border-color: transparent;
+    }
+
+    &::placeholder {
+      font-family: "Red Hat Display";
+      font-size: 1.125rem;
+      line-height: 1.333;
+      color: $text-primary-grey;
+      -webkit-text-fill-color: $text-primary-grey;
+
+      &_adaptive {
+        &::placeholder {
+          @media(max-width: 1365.98px) {
+            font-size: 1rem;
+            line-height: 1.3125;
+          }
+        }
+      }
+    }
+
+    &:focus::placeholder {
+      color: $text-primary-secondary-gray;
+      -webkit-text-fill-color: $text-primary-secondary-gray;
+    }
+
+    &_error {
+      -webkit-text-fill-color: $text-primary-error;
+      color: $text-primary-error;
+      border-color: $input-stroke-error;
+
+      &:hover, &:focus {
+        border-color: $input-stroke-error;
+      }
+
+      &::placeholder, &:focus::placeholder {
+        -webkit-text-fill-color: $text-primary-error;
+        color: $text-primary-error
+      }
+    }
+  }
+}
+
+.dataResult {
+  max-height: 290px;
+  padding: 10px 6px;
+  background-color: $background-main;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  overflow-y: auto;
+  width: 100%;
+  &_adaptive {
+    @media (min-width: 1365.98px) {
+      position: absolute;
+      z-index: 3;
+      top: 100%;
+      transform: translateY(10px);
+    }
+  }
+  &_notAdaptive {
+    position: absolute;
+    z-index: 3;
+    top: 100%;
+    transform: translateY(10px);
+  }
+  &__item {
+    padding: 9px 6px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.357;
+    &:hover {
+      background-color: $input-background;
+      border-radius: 7px;
+
+    }
+    &:active {
+      color: $text-primary-blue;
+    }
+  }
+  &__notFound {
+    padding: 9px 6px;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.357;
+  }
+}
+
+.error {
+  display: flex;
+  font-weight: 400;
+  font-size: rem(12);
+  align-items: center;
+  line-height: 1.334;
+  color: $text-primary-error;
+
+  &_adaptive {
+    @media (min-width: 1365.98px) {
+      top: 100%;
+      position: absolute;
+      transform: translateY(4px);
+    }
+
+    @media (max-width: 1365.98px) {
+      margin-top: 4px;
+    }
+  }
+
+  &_notAdaptive {
+    top: 100%;
+    position: absolute;
+    transform: translateY(4px);
+  }
+  svg {
+    flex: 0 0 18px;
+    margin-right: 6px;
+    height: 18px;
+  }
+}
